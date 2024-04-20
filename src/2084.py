@@ -1,9 +1,21 @@
+import os
+import sys
 import tkinter as tk
 import constants as c
 from enum import Enum
 from classes import GameOverFrame, MainFrame, ScoreHeaderFrame
 from tkinter import Menu, messagebox
 
+# https://stackoverflow.com/questions/31836104/pyinstaller-and-onefile-how-to-include-an-image-in-the-exe-file
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
 
 class Directions(Enum):
     Up = 0
@@ -20,8 +32,7 @@ class Game(tk.Tk):
         # Define root window settings
         self.grid()
         self.title(c.TITLE)
-        self.wm_iconbitmap(c.ICON_PATH)
-        self.iconbitmap(default=c.ICON_PATH)
+        #self.wm_iconbitmap(resource_path(c.ICON_PATH))
         self.minsize(500, 500)
         self.resizable(False, False)
 
