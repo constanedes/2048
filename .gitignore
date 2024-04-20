@@ -5,6 +5,7 @@ __pycache__/
 
 # Custom files
 database
+*.exe
 
 # C extensions
 *.so

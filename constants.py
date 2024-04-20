@@ -1,5 +1,5 @@
 TITLE = "2048"
-ICON_PATH = "./assets/game.ico"
+ICON_PATH = "game.ico"
 
 GRID_COLOR = "#A39489"
 EMPTY_CELL_COLOR = "#C2B3A9"

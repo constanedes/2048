@@ -5,7 +5,7 @@
             "label": "Run game",
             "type": "process",
             "command": "python",
-            "args": ["src/main.py"],
+            "args": ["2048.pyw"],
             "problemMatcher": [],
             "detail": "Runs the game",
             "presentation": {
@@ -14,6 +14,20 @@
             },
             "icon": {
                 "id": "game"
+            }
+        },
+        {
+            "label": "Build game",
+            "type": "process",
+            "command": "pyinstaller --name 2048 --onefile --windowed --icon=game.ico --add-data \"game.ico;.\" 2048.pyw",
+            "problemMatcher": [],
+            "detail": "Builds the game",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "icon": {
+                "id": "tools"
             }
         }
     ]

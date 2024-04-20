@@ -32,7 +32,7 @@ class Game(tk.Tk):
         # Define root window settings
         self.grid()
         self.title(c.TITLE)
-        #self.wm_iconbitmap(resource_path(c.ICON_PATH))
+        self.wm_iconbitmap(resource_path(c.ICON_PATH))
         self.minsize(500, 500)
         self.resizable(False, False)
 
@@ -58,10 +58,7 @@ class Game(tk.Tk):
 
         options = Menu(main_menu, tearoff=0)
         options.add_command(
-            label="Records",
-            command=lambda _: messagebox.showerror(
-                message="WIP", title="Not Implemented"
-            ),
+            label="Records"
         )
         options.add_separator()
         options.add_command(label="Exit", command=self.destroy)
@@ -70,16 +67,18 @@ class Game(tk.Tk):
         help = Menu(main_menu, tearoff=0)
         help.add_command(
             label="Instructions",
-            command=lambda _: messagebox.showerror(
-                message="WIP", title="Not Implemented"
-            ),
+            command=lambda: self.__show_message(c.INSTRUCTIONS, "Instructions")
         )
         help.add_command(
             label="About...",
-            command=lambda _: messagebox.showinfo(message=c.ABOUT, title="About"),
+            command=lambda: self.__show_message(c.ABOUT, "About"),
         )
         main_menu.add_cascade(label="Help", menu=help)
         return main_menu
+
+    def __show_message(self, text: str, title: str):
+         messagebox.showinfo(message=text, title=title)
+
 
     def __handle_binding(self, key: Directions) -> None:
         """Handles key bindings"""
